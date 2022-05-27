@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "sendstring_colemak_dh.h"
 
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
@@ -13,7 +12,7 @@ enum sofle_layers {
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
-    KC_COLEMAK_DH,
+    KC_CLMKDH,
     KC_LOWER,
     KC_RAISE,
     KC_NAV,
@@ -147,11 +146,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* NAVIGATION/BROWSING
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |QWERTY|COLEMAK|MACWIN|     |      |                    | VOLUP| VOLDO| MUTE | PREV | PLAY | NEXT |
+ * |      |QWERTY|COLEMAK|MACWIN|     |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | RESET|      |      |      |      |      |                    |      |      |  up  |      |      |      |
+ * | RESET|      |      |      |      |      |                    | PLAY | PREV |VOLUP | VOLDO| NEXT |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      | left | down | right|      |      |
+ * |      |MOUSEl|MOUSEU|MOUSED|MOUSER|      |-------.    ,-------|      | left |  up  | down | right|      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -160,11 +159,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'           '------''---------------------------'
  */
   [_NAV] = LAYOUT(
-  XXXXXXX , KC_QWERTY,KC_COLEMAK_DH,CG_TOGG, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RESET   , XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX , XXXXXXX ,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+  XXXXXXX, KC_QWERTY,KC_CLMKDH,CG_TOGG, XXXXXXX,  XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  RESET  , XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,                    KC_MPLY, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT, XXXXXXX,
+  XXXXXXX, KC_MS_L, KC_MS_U, KC_MS_D,   KC_MS_R,  XXXXXXX,                    XXXXXXX, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                   _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______
   ),
 /* ABLETON
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -189,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  | A(c) | S(d) | D(e) | F(fy) | G(g)|-------.    ,-------| H(a) | J(b) | K(c) | L(d) |      |Enter |
  * |------+------+------+------+------+------|  mute |    |       |------+------+------+------+------+------|
- * | grp  | undo | cut  | copy | paste| save |-------|    |-------|nuaud|numidt |numidc| loop |      |RShift|  
+ * | grp  |ud(rd)| cut  | copy | paste| save |-------|    |-------|nuaud|numidt |numidc| loop |      |RShift|  
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LGUI |togAlt|togCTR|LOWER | /Frmstop/       \Space \  |RAISE | RCTR | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -197,10 +196,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_ABLETON] = LAYOUT(
-  KC_MIMA, KC_CLIP,  KC_EXMD,  KC_EXAU,  KC_ISNT,    KC_RMTM,                    KC_0,    KC_1,      KC_2,      KC_9,    KC_4,  KC_DEL,
-  KC_DUPE, KC_,      KC_W,     KC_E,     KC_RNM,     KC_,                         KC_Y,    KC_U,      KC_CONS,   KC_O,    KC_P,  KC_BSPC,
+  KC_MIMA, KC_CLIP,  KC_EXMD,  KC_EXAU,  KC_ISNT,    KC_RMTM,                     KC_0,    KC_1,      KC_2,      KC_3,    KC_4,  KC_DEL,
+  KC_DUPE, KC_SAVE,  KC_W,     KC_E,     KC_RNM,     KC_,                         KC_Y,    KC_U,      KC_CONS,   KC_O,    KC_,  KC_BSPC,
   KC_TAB,  KC_A,     KC_S,     KC_D,     KC_F,       KC_G,                        KC_H,    KC_J,      KC_K,      KC_L,    KC_,  KC_ENT,
-  KC_GRP,  KC_SAVE,  KC_UNDO,  KC_REDO,  KC_PASTE,   KC_COPY, KC_MUTE,    XXXXXXX,KC_NUAUD,KC_NUMIDT, KC_NUMIDC, KC_LOOP, KC_,  KC_RSFT,
+  KC_GRP,  KC_UNDO,  KC_REDO,  KC_PASTE,   KC_COPY, KC_MUTE,    XXXXXXX,KC_NUAUD,KC_NUMIDT, KC_NUMIDC, KC_LOOP, KC_,  KC_RSFT,
                 KC_LGUI,KC_TOGALT,KC_TOGCTRL, KC_LOWER, KC_FRMSTP,      KC_SPC,  KC_RAISE, KC_RCTRL, KC_RALT, KC_RGUI
 )
 };
@@ -233,7 +232,7 @@ static void print_status_narrow(void) {
             oled_write_ln_P(PSTR("Qwrt"), false);
             break;
         case _COLEMAK_DH:
-            oled_write_ln_P(PSTR("Clmk"), false);
+            oled_write_ln_P(PSTR("ClmkDH"), false);
             break;
         default:
             oled_write_P(PSTR("Undef"), false);
@@ -291,7 +290,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_QWERTY);
             }
             return false;
-        case KC_COLEMAK_DH:
+        case KC_CLMKDH:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_COLEMAK_DH);
             }
@@ -431,7 +430,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case KC_CLIP:
             if (record->event.pressed) {
-
+                SEND_STRING(SS_LCTL(X_TAB));
             }
             break;
         case KC_NUAUD:
@@ -441,9 +440,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case KC_NUMIDT:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL())
+                SEND_STRING(SS_LCTL(X_LSFT("t")));
             }
-            break;    
+            break;
+        case KC_NUMIDC:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL(X_LSFT("m")));
+            }
+            break;   
     }
     return true;
 }
@@ -459,9 +463,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         if (clockwise) {
-            tap_code(KC_PGDOWN);
+            tap_code(KC_WH_D);
         } else {
-            tap_code(KC_PGUP);
+            tap_code(KC_WH_U);
         }
     }
     return true;
