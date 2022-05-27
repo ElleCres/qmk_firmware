@@ -9,4 +9,5 @@ for more options.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define TAPPING_TERM 200
+#define LAYER_STATE_8bit
+
