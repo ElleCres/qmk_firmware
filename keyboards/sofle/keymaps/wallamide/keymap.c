@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  | A(c) | S(d) | D(e) | F(fy) | G(g)|-------.    ,-------| H(a) | J(b) | K(c) | L(d) | SPLIT|Enter |
  * |------+------+------+------+------+------|  mute |    |       |------+------+------+------+------+------|
- * | grp  |ud(rd)| cut  | copy | paste| REDO |-------|    |-------|nuaud|numidt |numidc| loop |RShift| TRANS|  
+ * | grp  | undo | cut  | copy | paste| REDO |-------|    |-------|nuaud|numidt |numidc| loop |RShift| TRANS|  
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LGUI |togAlt|togCTR|LOWER | /Frmstop/       \Space \  |RAISE | RCTR | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
