@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_COLN, KC_DLR,  KC_SCLN, KC_LPRN, KC_RPRN,                     KC_CIRC, KC_7,    KC_8,    KC_9,    KC_BSLS, KC_BSPC,
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_LBRC, KC_RBRC,                     KC_ASTR, KC_4,    KC_5,    KC_6,    KC_PERC, KC_PIPE,
   _______, KC_EQL,  KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,   _______, KC_AMPR, KC_1,    KC_2,    KC_3,    KC_RGUI, _______,
-                  _______, _______, _______, _______, _______,      _______, _______,    KC_0, _______, KC_RCTRL
+                 _______, _______, _______, _______, _______,        _______, _______, KC_0, _______, KC_RCTRL
 ),
 /* RAISE
  * ,----------------------------------------.                    ,-----------------------------------------.
@@ -141,23 +141,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* NAVIGATION/BROWSING
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | RESET|QWERTY|COLEMAK|MACWIN|     |      |                    | PLAY | PREV |VOLUP | VOLDO| NEXT |TRANS |
+ * | RESET|QWERTY|COLEMAK|MACWIN|     | MUTE |                    | PLAY | PREV |VOLUP | VOLDO| NEXT |TRANS |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |TRANS|      |      |      |      |      |                    |      | left |  up  | down | right|      |
+ * |TRANS |      |      |      |      |      |                    |      | left |  up  | down | right|TRANS |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |TRANS |MOUSEl|MOUSEU|MOUSED|MOUSER|      |-------.    ,-------|      |wheelL|leftcl|rightc|wheelR|      |
- * |------+------+------+------+------+------|  MUTE |    |mouse3 |------+------+------+------+------+------|
- * |TRANS |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * |TRANS |MOUSEl|MOUSEU|MOUSED|MOUSER|      |-------.    ,-------|      |wheelL|leftcl|rightc|wheelR|TRANS |
+ * |------+------+------+------+------+------|mouse3 |    |KC_TRNS|------+------+------+------+------+------|
+ * |TRANS |      |      |      |      |      |-------|    |-------|      |      |      |      |      |TRANS |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_NAV] = LAYOUT(
-  RESET  , KC_QWERTY,KC_CLMKDH,CG_TOGG, XXXXXXX,  XXXXXXX,                    KC_MPLY, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT, KC_TRNS,
-  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,                    XXXXXXX, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,XXXXXXX,
-  KC_TRNS, KC_MS_L, KC_MS_U, KC_MS_D,   KC_MS_R,  XXXXXXX,                    XXXXXXX, KC_WH_L, KC_BTN1, KC_BTN2, KC_WH_R, XXXXXXX,
-  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, _______,  KC_BTN3, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  RESET  , KC_QWERTY,KC_CLMKDH,CG_TOGG, XXXXXXX,  KC_MUTE,                    KC_MPLY, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT, KC_TRNS,
+  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,                    XXXXXXX, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,KC_TRNS,
+  KC_TRNS, KC_MS_L, KC_MS_U, KC_MS_D,   KC_MS_R,  XXXXXXX,                    XXXXXXX, KC_WH_L, KC_BTN1, KC_BTN2, KC_WH_R, KC_TRNS,
+  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, KC_BTN3,  _______, XXXXXXX, KC_F6, KC_F5, KC_F3, KC_F1, KC_TRNS,
                    _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______
 ),
  /* ABLETON
@@ -166,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | dupe | save | W(c#)| E(d#)|  RNM | T(f#)|                    | Y(g#)|U(a#) | cons | O(c#)|TOGBRO| Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  | A(c) | S(d) | D(e) | F(fy) | G(g)|-------.    ,-------| H(a) | J(b) | K(c) | L(d) | SPLIT|Enter |
+ * | Tab  | A(c) | S(d) | D(e) | F(f) | G(g) |-------.    ,-------| H(a) | J(b) | K(c) | L(d) | SPLIT|Enter |
  * |------+------+------+------+------+------|  mute |    |       |------+------+------+------+------+------|
  * | grp  | undo | cut  | copy | paste| REDO |-------|    |-------|nuaud|numidt |numidc| loop |RShift| TRANS|  
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -177,9 +177,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ABLETON] = LAYOUT(
   C(KC_M), KC_F12,   C(S(KC_E)),C(S(KC_R)),C(KC_I), C(S(KC_DEL)),                KC_0,    KC_1,      KC_2,      KC_3,    KC_4,      KC_DEL,
-  KC_DUPE, C(KC_S),  KC_W,     KC_E,     C(KC_R),   KC_T,                        KC_Y,    KC_U,      KC_CONS,   KC_O,    C(A(KC_B)),KC_BSPC,
+  KC_DUPE, C(KC_S),  KC_W,     KC_E,     C(KC_R),   KC_T,                        KC_Y,    KC_U,      C(KC_J),   KC_O,    C(A(KC_B)),KC_BSPC,
   KC_TAB,  KC_A,     KC_S,     KC_D,     KC_F,      KC_G,                        KC_H,    KC_J,      KC_K,      KC_L,    C(KC_E),   KC_ENT,
-  KC_GRP,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),   C(KC_Y), KC_MUTE,    KC_RALT,C(KC_T), C(S(KC_T)),C(S(KC_M)),C(KC_L), KC_RSFT,   KC_TRNS,  
+  C(KC_G), C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),   C(KC_Y), KC_MUTE,    KC_RALT,C(KC_T), C(S(KC_T)),C(S(KC_M)),C(KC_L), KC_RSFT,   KC_TRNS,  
                    _______, _______, _______, _______, S(KC_SPC),        _______, _______, _______, _______, _______ 
 ),
 };
