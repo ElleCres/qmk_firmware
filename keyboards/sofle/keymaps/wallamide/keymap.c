@@ -143,10 +143,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | RESET|QWERTY|COLEMAK|MACWIN|     | MUTE |                    | PLAY | PREV |VOLUP | VOLDO| NEXT |TRANS |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |TRANS |      |      |      |      |      |                    |      | left |  up  | down | right|TRANS |
+ * |TRANS |      |      | PRVWD|NXTWD |      |                    |      | left |  up  | down | right|TRANS |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |TRANS |MOUSEl|MOUSEU|MOUSED|MOUSER|      |-------.    ,-------|      |wheelL|leftcl|rightc|wheelR|TRANS |
- * |------+------+------+------+------+------|mouse3 |    |KC_TRNS|------+------+------+------+------+------|
+ * |------+------+------+------+------+------|mouse3 |    |_______|------+------+------+------+------+------|
  * |TRANS |      |      |      |      |      |-------|    |-------|      |      |      |      |      |TRANS |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
@@ -154,10 +154,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'           '------''---------------------------'
  */
 [_NAV] = LAYOUT(
-  RESET  , KC_QWERTY,KC_CLMKDH,CG_TOGG, XXXXXXX,  KC_MUTE,                    KC_MPLY, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT, KC_TRNS,
-  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,                    XXXXXXX, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,KC_TRNS,
-  KC_TRNS, KC_MS_L, KC_MS_U, KC_MS_D,   KC_MS_R,  XXXXXXX,                    XXXXXXX, KC_WH_L, KC_BTN1, KC_BTN2, KC_WH_R, KC_TRNS,
-  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, KC_BTN3,  _______, XXXXXXX, KC_F6, KC_F5, KC_F3, KC_F1, KC_TRNS,
+  RESET  , KC_QWERTY,KC_CLMKDH,CG_TOGG, XXXXXXX,  KC_MUTE,                    KC_MPLY, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT, _______,
+  _______, XXXXXXX, XXXXXXX, KC_PRVWD,  KC_NXTWD, XXXXXXX,                    XXXXXXX, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,_______,
+  _______, KC_MS_L, KC_MS_U, KC_MS_D,   KC_MS_R,  XXXXXXX,                    XXXXXXX, KC_WH_L, KC_BTN1, KC_BTN2, KC_WH_R, _______,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, KC_BTN3,  _______, XXXXXXX, KC_F6, KC_F5, KC_F3, KC_F1, _______,
                    _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______
 ),
  /* ABLETON
@@ -179,8 +179,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   C(KC_M), KC_F12,   C(S(KC_E)),C(S(KC_R)),C(KC_I), C(S(KC_DEL)),                KC_0,    KC_1,      KC_2,      KC_3,    KC_4,      KC_DEL,
   KC_DUPE, C(KC_S),  KC_W,     KC_E,     C(KC_R),   KC_T,                        KC_Y,    KC_U,      C(KC_J),   KC_O,    C(A(KC_B)),KC_BSPC,
   KC_TAB,  KC_A,     KC_S,     KC_D,     KC_F,      KC_G,                        KC_H,    KC_J,      KC_K,      KC_L,    C(KC_E),   KC_ENT,
-  C(KC_G), C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),   C(KC_Y), KC_MUTE,    KC_RALT,C(KC_T), C(S(KC_T)),C(S(KC_M)),C(KC_L), KC_RSFT,   KC_TRNS,  
-                   _______, _______, _______, _______, S(KC_SPC),        _______, _______, _______, _______, _______ 
+  C(KC_G), C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),   C(KC_Y), KC_MUTE,    _______,C(KC_T), C(S(KC_T)),C(S(KC_M)),C(KC_L), KC_RSFT,   _______,  
+                   _______, _______, _______, _______, S(KC_SPC),         _______, _______, _______, _______, _______ 
 ),
 };
 
@@ -298,11 +298,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_on(_NAV);
             } else {
                 layer_off(_NAV);
-            }
-            return false;
-        case KC_ABTN:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_ABLETON);
             }
             return false;
         case KC_PRVWD:
