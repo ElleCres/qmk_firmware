@@ -11,3 +11,6 @@ for more options.
 
 #define LAYER_STATE_8bit
 
+#define TAPPING_TOGGLE 2
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
